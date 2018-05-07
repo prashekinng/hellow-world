@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.efsavage</groupId>
 	<artifactId>hello-world-war</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 	<packaging>war</packaging>
 	<name>Hello World Web Application Repository</name>
 	<description>Simplest possible Java Webapp</description>
@@ -33,22 +33,18 @@
 		<repository>
 			<id>my_group</id>
 			<url>http://192.168.2.16:8081/repository/my_group/</url>
-			</repository>
+		</repository>
 	</repositories>
-		      
-		      
-		      
-		  
-	
+		     
 	<distributionManagement>
         <repository>
             <id>my_release</id>
-            <name>Internal Releases</name>
+            <name>my_release</name>
             <url>http://192.168.2.16:8081/repository/my_release/</url>
         </repository>
         <snapshotRepository>
             <id>my_snapshot</id>
-            <name>Internal Snapshot Releases</name>
+            <name>my_snapshot</name>
             <url>http://192.168.2.16:8081/repository/my_snapshot/</url>
         </snapshotRepository>
     </distributionManagement>

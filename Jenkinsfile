@@ -16,6 +16,8 @@ stages {
       sh 'mvn package'
       }
    }
+   
+ }
    post {
         success {
           emailext(
@@ -26,6 +28,5 @@ stages {
           )
         }
       }
- }
  
 }

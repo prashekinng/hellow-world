@@ -1,36 +1,26 @@
 pipeline {
-  agent any 
-  triggers {
-    pollSCM('* * * * *')
-  }
-  stages {
-    stage("Compile") {
-      steps {
-        sh "mvn compile"
+agent any 
+stages {
+   stage ('compile stage') {
+   steps {
+    sh 'mvn compile'
+    }
+   }
+   stage ('test stage') {
+   steps {
+   sh 'mvn test'
+     }
+   }
+   stage ('package') {
+   steps {
+      sh 'mvn package'
       }
-    }
-    stage("Test") {
-      steps {
-        sh "mvn test"
-      }
-    }
-    stage("Compile") {
-      steps {
-        sh "mvn package"
-      }
-    }
-    post {
-    success {
-      emailext(
-        subject: "${env.JOB_NAME} [${env.BUILD_NUMBER}] Failed!",
-        body: """<p>'${env.JOB_NAME} [${env.BUILD_NUMBER}]' Failed!":</p>
-        <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>""",
-        to: "naredla.ramireddy@gmail.com"
-      )
-    }
-  }
-  }
-  
-    
-        
+   }
+ }
+ post {
+   always {
+     archiveArtifacts artifacts: 'pom$BUILD_NUMBER.xml',  fingerprint: true
+   
+     }
+   }
 }

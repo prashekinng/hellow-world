@@ -17,10 +17,5 @@ stages {
       }
    }
  }
- post {
-   always {
-     archiveArtifacts artifacts: 'pom$BUILD_NUMBER.xml',  fingerprint: true
-   
-     }
-   }
+ 
 }

@@ -16,7 +16,16 @@ stages {
       sh 'mvn package'
       }
    }
-   
+   stage ('package') {
+   steps {
+      sh 'mvn package'
+      }
+   }
+   stage ('Docker Build') {
+   steps {
+      sh 'docker build -t hello-world . '
+      }
+   }
  }
  
 }
